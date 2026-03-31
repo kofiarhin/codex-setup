@@ -1,4 +1,3 @@
-# .codex/agents/api-mapper.toml
 name = "api_mapper"
 description = "Maps backend request flow across routes, controllers, middleware, and models."
 model = "gpt-5.4-mini"

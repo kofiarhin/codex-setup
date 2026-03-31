@@ -1,4 +1,3 @@
-# .codex/agents/test-runner.toml
 name = "test_runner"
 description = "Runs and interprets test failures, then reports likely root causes."
 model = "gpt-5.4-mini"

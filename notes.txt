@@ -1,0 +1,104 @@
+Notes: how to invoke skills found in this repo
+
+Summary
+- The Codex-standard skill location in this repo is `.codex/skills/`.
+- The available skills are:
+  - `frontend-design`
+  - `spec-generator`
+  - `implement-plan`
+  - `commit-message`
+  - `code-review`
+- Supporting agents live in `.codex/agents/`.
+- I did not find a custom CLI wrapper or script that invokes these skills directly, so the usage pattern is prompt-driven.
+
+How to invoke skills
+
+1) `frontend-design`
+- File: `.codex/skills/frontend-design/SKILL.md`
+- Use when you want Codex to design or implement polished UI.
+- Example prompts:
+  - `Use frontend-design to build a product landing page for Roundel Kitchens.`
+  - `Use frontend-design to create a React dashboard with a bold editorial style.`
+  - `Design and implement a polished signup form using frontend-design.`
+- Best for:
+  - websites
+  - landing pages
+  - dashboards
+  - React components
+  - HTML/CSS layouts
+  - styling or beautifying any web UI
+
+2) `spec-generator`
+- File: `.codex/skills/spec-generator/SKILL.md`
+- Purpose: generate a reusable `/spec ...` prompt and save it to `_spec-prompt/<feature-name>.md`.
+- Example prompts:
+  - `Use spec-generator to create a /spec prompt for adding login.`
+  - `Generate a reusable /spec prompt for a cart feature.`
+- Explicit command pattern shown in the skill:
+  - `/spec Build a login feature for this repo ...`
+- Important detail: this generates the prompt for a spec, not the final feature spec itself.
+
+3) `implement-plan`
+- File: `.codex/skills/implement-plan/SKILL.md`
+- Purpose: implement a plan file by orchestrating `plan-reader`, `slicer`, `coder`, `tester`, and `reviewer`.
+- Example prompts:
+  - `Use implement-plan on _plan/login-feature.md.`
+  - `Implement the plan in _plan/cart-checkout.md using implement-plan.`
+- Expected input:
+  - a file path to a plan/spec
+  - or a direct plan reference from the user
+- Internal workflow:
+  - `plan-reader -> slicer -> coder -> tester -> reviewer -> orchestrator`
+
+4) `commit-message`
+- File: `.codex/skills/commit-message/SKILL.md`
+- Purpose: draft a commit message from staged git changes.
+- Example prompts:
+  - `/commit-message`
+  - `$commit-message`
+  - `Use commit-message to summarize the staged changes.`
+- Preconditions:
+  - stage the intended changes first
+- Behavior:
+  - runs `git status`
+  - runs `git diff --staged`
+  - drafts a commit message
+  - does not auto-commit unless explicitly approved
+
+5) `code-review`
+- File: `.codex/skills/code-review/SKILL.md`
+- Purpose: review staged and unstaged diffs, then merge findings from reviewer subagents.
+- Example prompts:
+  - `Run code-review on the current diff.`
+  - `Use code-review to review my staged and unstaged changes.`
+- Internal workflow:
+  - collects `git diff` and `git diff --staged`
+  - spawns `a11y-reviewer`
+  - spawns `code-quality-reviewer`
+  - merges findings into one report
+  - asks for approval before making code changes
+
+Supporting agents
+- `.codex/agents/plan-reader.toml`
+- `.codex/agents/slicer.toml`
+- `.codex/agents/coder.toml`
+- `.codex/agents/tester.toml`
+- `.codex/agents/reviewer.toml`
+- `.codex/agents/a11y-reviewer.toml`
+- `.codex/agents/code-quality-reviewer.toml`
+- `.codex/agents/api-mapper.toml`
+- `.codex/agents/test-runner.toml`
+
+These are mainly invoked by orchestration skills or by asking Codex to use the named agent directly. Example prompts:
+- `Use plan-reader on _plan/login-feature.md.`
+- `Use reviewer to validate the implementation against the plan.`
+- `Use a11y-reviewer on this UI diff.`
+- `Use api-mapper to trace the backend request flow.`
+
+Practical recommendation
+- Prefer the `.codex/skills/` and `.codex/agents/` definitions as the canonical entry points.
+- Invoke by naming the skill or agent in your prompt and giving the target artifact, for example:
+  - `Use frontend-design to build a responsive React pricing page.`
+  - `Use implement-plan on _plan/add-admin-login.md.`
+  - `Run code-review on my current diff.`
+  - `/commit-message`

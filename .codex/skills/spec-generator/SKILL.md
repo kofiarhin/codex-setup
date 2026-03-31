@@ -15,7 +15,7 @@ Rules:
 
 Sample pattern to follow:
 
-/spec Build a login feature for this repo. First audit the existing client and server auth structure, routing, user model, middleware, and any current protected-route or admin patterns. Then generate a repo-specific, implementation-ready feature spec and save it to `_plan/login-feature.md` using `.claude/templates/feature-spec-template.md`.
+/spec Build a login feature for this repo. First audit the existing client and server auth structure, routing, user model, middleware, and any current protected-route or admin patterns. Then generate a repo-specific, implementation-ready feature spec and save it to `_plan/login-feature.md` using `.codex/templates/feature-spec-template.md`.
 
 Scope the feature around standard user login only. Cover:
 

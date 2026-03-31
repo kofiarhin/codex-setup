@@ -19,7 +19,7 @@ Your job is to take the user's request and turn it into a concrete, repo-specifi
 6. Do not generate implementation code.
 7. Save the final spec as a new markdown file inside `_plan/`.
 8. Use a kebab-case filename based on the feature name or best summary of the request.
-9. Use `.claude/templates/feature-spec-template.md` as the output structure.
+9. Use `.codex/templates/feature-spec-template.md` as the output structure.
 
 ## What the user may provide
 
@@ -71,6 +71,6 @@ The spec must be:
 - readable
 - useful without generating code
 
-Use the structure from `.claude/templates/feature-spec-template.md`.
+Use the structure from `.codex/templates/feature-spec-template.md`.
 
 Now inspect the repo, generate the spec, and save it into `_plan/`.
