@@ -102,3 +102,15 @@ Practical recommendation
   - `Use implement-plan on _plan/add-admin-login.md.`
   - `Run code-review on my current diff.`
   - `/commit-message`
+
+6) `repo-bootstrap-mern`
+- File: `.codex/skills/repo-bootstrap-mern/SKILL.md`
+- Purpose: scaffold a MERN starter repo aligned to `AGENT.md` using the shared generator and templates.
+- Example prompts:
+  - `Use repo-bootstrap-mern to scaffold ../kitchen-portal.`
+  - `Use repo-bootstrap-mern to scaffold ../kitchen-portal and install dependencies.`
+- Script entrypoint:
+  - `node scripts/scaffold_mern.js ../kitchen-portal --project-name "Kitchen Portal"`
+- Supporting resources:
+  - `assets/templates/mern-base/`
+  - `references/standards-map.md`

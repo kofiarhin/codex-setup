@@ -2,8 +2,7 @@
 
 This list is prioritized for **this repository’s current shape** (skill-oriented Codex setup) and your standards in `AGENT.md` (MERN conventions, strict architecture, output discipline).
 
-## 1) `repo-bootstrap-mern`
-**Why high value:** You repeatedly enforce a specific MERN baseline structure and conventions. Automating this yields immediate consistency and faster project starts.
+
 
 **Primary workflow**
 1. Validate target path and existing files.

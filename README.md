@@ -1,12 +1,15 @@
 # Codex Setup
 
-This repo stores repo-local Codex skills, agents, and templates.
+This repo stores repo-local Codex skills, agents, templates, scripts, and references.
 
 ## Structure
 
 - `.codex/skills/` contains end-user skills
 - `.codex/agents/` contains supporting agents
 - `.codex/templates/` contains shared templates
+- `assets/templates/` contains scaffold source files
+- `scripts/` contains executable repo helpers
+- `references/` contains convention maps and supporting docs
 - `notes.txt` contains repo-specific invocation notes
 
 ## Skill Invocation
@@ -18,6 +21,7 @@ Examples:
 - `Use frontend-design to build a responsive React pricing page.`
 - `Use spec-generator to create a /spec prompt for adding login.`
 - `Use implement-plan on _plan/login-feature.md.`
+- `Use repo-bootstrap-mern to scaffold ../kitchen-portal.`
 - `Run code-review on my current diff.`
 - `/commit-message`
 
@@ -26,6 +30,7 @@ Examples:
 - `frontend-design`: Create polished frontend UI and layouts
 - `spec-generator`: Generate a reusable `/spec ...` prompt
 - `implement-plan`: Execute a plan using repo agents
+- `repo-bootstrap-mern`: Scaffold a standards-aligned MERN starter repo
 - `code-review`: Review staged and unstaged diffs
 - `commit-message`: Draft a commit message from staged changes
 
@@ -47,7 +52,9 @@ Example flow for a new feature:
 2. Run the generated `/spec ...` prompt to create a plan in `_plan/`
 3. Implement the saved plan:
    - `Use implement-plan on _plan/login-feature.md.`
-4. Review the resulting diff:
+4. Scaffold a new standards-aligned MERN repo when needed:
+   - `Use repo-bootstrap-mern to scaffold ../kitchen-portal.`
+5. Review the resulting diff:
    - `Run code-review on my current diff.`
-5. Draft a commit message after staging changes:
+6. Draft a commit message after staging changes:
    - `/commit-message`
